@@ -6,13 +6,13 @@
 /*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:00:54 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/11/25 23:04:07 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/06 23:17:53 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void swap(node **st)
+void swap(node **st, char *str)
 {
     node *sec;
 
@@ -23,8 +23,9 @@ void swap(node **st)
         (*st)->next = NULL;
     sec->next = *st;
     *st = sec;
+    ft_putstr_fd(str, 1);
 }
-void push(node **from ,node **to)
+void push(node **from ,node **to, char *str)
 {
     node *tmp;
 
@@ -32,8 +33,9 @@ void push(node **from ,node **to)
     (*from)->next = NULL;
     node_front(to, *from);
     (*from) = tmp;
+    ft_putstr_fd(str, 1);
 }
-void rotate(node **st)
+void rotate(node **st, char *str)
 {
     node *tmp;
     node *last;
@@ -45,10 +47,10 @@ void rotate(node **st)
     last = last_node(st);
     last->next = tmp;
     tmp->next = NULL;
+    ft_putstr_fd(str, 1);
 }
-void rrotate(node **st)
+void rrotate(node **st, char *str)
 {
-    node *tmp;
     node *last;
     node *sec;
 
@@ -61,4 +63,5 @@ void rrotate(node **st)
     sec->next = NULL;
     last->next = *st;
     *st = last;
+    ft_putstr_fd(str, 1);
 }

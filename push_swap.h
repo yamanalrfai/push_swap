@@ -6,15 +6,14 @@
 /*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:35:00 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/11/26 17:45:02 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/06 23:17:28 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "libft/libft.h"
 
 typedef struct nod
 {
@@ -33,10 +32,10 @@ typedef struct cheepest_mov
 } cheepest_move;
 
 
-void swap(node **st);
-void push(node **from ,node **to);
-void rotate(node **st);
-void rrotate(node **st);
+void swap(node **st, char *str);
+void push(node **from ,node **to, char *str);
+void rotate(node **st, char *str);
+void rrotate(node **st, char *str);
 void sort_a_b(node **stack_a ,node **stack_b, cheepest_move *tmp);
 void sort_three(node **stack_a);
 node *find_tar_b_a(node *a, node *b);
@@ -55,4 +54,10 @@ node *bigest_info(node *a);
 node *smallest_info(node *a);
 node *find_tar_a_b(node *a, node *b);
 void sort_b_a(node **stack_a ,node **stack_b, cheepest_move *tmp);
+void sort_algo(node **stack_a, node **stack_b, cheepest_move *tmp, int size);
+void make_it_okay(node **stack_a);
+void see_v_a(int c, char **v, node **stack_a);
+void ft_fre(node **stack_a, node **stack_b, cheepest_move *tmp);
+void sort_two(node **stack_a);
+void cheek_num(node **stack_a);
 #endif

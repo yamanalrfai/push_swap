@@ -6,7 +6,7 @@
 /*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:36 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/11/26 19:01:49 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/06 23:17:35 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,19 @@ int add_node(node **old, int inf)
     if (!a)
     {
         clear_all_nodes(old);
-        return -1;
+        return (-1);
     }
     a->info = inf;
     a->next = NULL;
     node_back(old, a);
-    return 1;
+    return (1);
 }
-
 void node_back(node **lst, node *new)
 {
     node *i;
 
     if (new == NULL)
-        return;
+        return ;
     if (*lst == NULL)
         *lst = new;
     else
@@ -43,7 +42,7 @@ void node_back(node **lst, node *new)
 void node_front(node **lst, node *new)
 {
     if (new == NULL)
-        return;
+        return ;
     if (*lst == NULL)
         *lst = new;
     else
@@ -55,52 +54,53 @@ void node_front(node **lst, node *new)
 int find_node(node **lst, int inf)
 {
     node *i;
+    int index;
     
     i = *lst;
-    int index = 0;
+    index = 0;
     while (i != NULL && i->info != inf)
     {
         index++;
         i = i->next;
     }
-    return index;
+    return (index);
 }
 node *last_node(node **lst)
 {
     node *i;
 
-    if (*lst == NULL)
-        return NULL;
-
     i = *lst;
+    if (*lst == NULL)
+        return (NULL);
     while (i->next != NULL)
         i = i->next; 
-    return i;
+    return (i);
 }
 void clear_all_nodes(node **lst)
 {
     node *current = *lst;
     node *next;
 
+    current = *lst;
     while (current != NULL)
     {
         next = current->next;
         free(current);
         current = next;
     }
-
     *lst = NULL;
 }
-
 int size_node(node *lst)
 {
+    int i;
+
+    i = 0;
     if (lst == NULL)
-        return 0;
-    int i = 0;
+        return (0);
     while (lst)
     {
         i++;
         lst = lst->next;
     }
-    return i;
+    return (i);
 }

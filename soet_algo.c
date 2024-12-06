@@ -6,7 +6,7 @@
 /*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 20:25:36 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/01 12:09:26 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/06 23:17:43 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,23 @@ void sort_a_b(node **stack_a, node **stack_b, cheepest_move *tmp)
         a = a->next;
     }
 }
+void sort_two(node **stack_a)
+{
+    node *a;
+    node *b;
+
+    a = *stack_a;
+    b = a->next;
+    if (a->info > b->info)
+        swap(stack_a, "sa\n");
+}
+void cheek_num(node **stack_a)
+{
+    if (size_node(*stack_a) == 2)
+        sort_two(stack_a);
+    else
+        sort_three(stack_a);
+}
 void sort_three(node **stack_a)
 {
     node *a;
@@ -43,55 +60,46 @@ void sort_three(node **stack_a)
     node *c;
 
     a = *stack_a;
-    if (size_node(a) == 1)
-        return;
-    if (size_node(a) == 2)
-    {
-        if (a->info > a->next->info)
-        {
-            swap(stack_a);
-            printf("sa\n");
-        }
-        return;
-    }
     b = a->next;
     c = b->next;
     if (a->info > b->info && b->info < c->info && a->info < c->info)
-    {
-        swap(stack_a);
-        printf("sa\n");
-    }
+        swap(stack_a, "sa\n");
     else if (a->info > b->info && b->info > c->info && a->info > c->info)
     {
-        swap(stack_a);
-        rrotate(stack_a);
-        printf("sa\n");
-        printf("rra\n");
+        swap(stack_a, "sa\n");
+        rrotate(stack_a, "rra\n");
     }
     else if (a->info > b->info && b->info < c->info && a->info > c->info)
-    {
-        rotate(stack_a);
-        printf("ra\n");
-    }
+        rotate(stack_a, "ra\n");
     else if (a->info < b->info && b->info > c->info && a->info < c->info)
     {
-        swap(stack_a);
-        rotate(stack_a);
-        printf("sa\n");
-        printf("ra\n");
+        swap(stack_a, "sa\n");
+        rotate(stack_a, "ra\n");
     }
     else if (a->info < b->info && b->info > c->info && a->info > c->info)
-    {
-        rrotate(stack_a);
-        printf("rra\n");
-    }
+        rrotate(stack_a, "rra\n");
 }
 int up_or_down(int tmp, node **stack_a)
 {
-    if (tmp > size_node(*stack_a) / 2)
+    if (tmp > (size_node(*stack_a) / 2))
         return (1);
     else
         return (0);
+}
+int clac(int tmp_a, int tmp_b, node **stack_a, node **stack_b)
+{
+    int co;
+
+    co = 0;
+    if (up_or_down(tmp_a, stack_a))
+        co = size_node(*stack_a) - tmp_a;
+    else
+        co = tmp_a;
+    if (up_or_down(tmp_b, stack_b))
+        co += size_node(*stack_b) - tmp_b;
+    else
+        co += tmp_b;
+    return (co);
 }
 int co_cost(node *a, node *b, node **stack_a, node **stack_b)
 {
@@ -102,43 +110,18 @@ int co_cost(node *a, node *b, node **stack_a, node **stack_b)
     tmp_a = find_node(stack_a, a->info);
     tmp_b = find_node(stack_b, b->info);
     if (up_or_down(tmp_a, stack_a) == up_or_down(tmp_b, stack_b))
-    {
         if (up_or_down(tmp_a, stack_a))
-        {
             if ((size_node(*stack_a) - tmp_a) > (size_node(*stack_b) - tmp_b))
                 co = (size_node(*stack_a) - tmp_a);
             else
                 co = (size_node(*stack_b) - tmp_b);
-        }
         else
-        {
             if (tmp_a > tmp_b)
                 co = tmp_a;
             else
                 co = tmp_b;
-        }
-        // if (tmp_a > tmp_b)
-        // {    
-        //     co = tmp_a;
-        //     if (up_or_down(tmp_a, stack_a))
-        //         co = size_node(*stack_a) - co;
-        // }
-        // else
-        // {
-        //     co = tmp_b;
-        //     if (up_or_down(tmp_b, stack_b))
-        //         co = size_node(*stack_b) - co;
-        // }    
-        return (co);
-    }
-    if (up_or_down(tmp_a, stack_a))
-        co = size_node(*stack_a) - tmp_a;
     else
-        co = tmp_a;
-    if (up_or_down(tmp_b, stack_b))
-        co += size_node(*stack_b) - tmp_b;
-    else
-        co += tmp_b;
+        co = clac(tmp_a, tmp_b, stack_a, stack_b);
     return (co);
 }
 void save_in_the_rmp(node *a, node *b, cheepest_move *tmp, int move)
@@ -173,6 +156,46 @@ node *bigest_info(node *a)
     }
     return (big);
 }
+void doing_thinges_rrr(int a, int b, node **stack_a, node **stack_b)
+{
+    while (a != 0 && b != 0)
+    {
+        rrotate(stack_a, "rrr\n");
+        rrotate(stack_b, NULL);
+        a--;
+        b--;
+    }
+    while (a != 0)
+    {
+        rrotate(stack_a, "rra\n");
+        a--;
+    }
+    while (b != 0)
+    {
+        rrotate(stack_b, "rrb\n");
+        b--;
+    }
+}
+void doing_thinges_rr(int a, int b, node **stack_a, node **stack_b)
+{
+    while (a != 0 && b != 0)
+    {
+        rotate(stack_a, "rr\n");
+        rotate(stack_b, NULL);
+        a--;
+        b--;
+    }
+    while (a != 0)
+    {
+        rotate(stack_a, "ra\n");
+        a--;
+    }
+    while (b != 0)
+    {
+        rotate(stack_b, "rb\n");
+        b--;
+    }
+}
 void see_tmp_and_do_the_the_thing(node **stack_a, node **stack_b, cheepest_move *tmp)
 {
     int tmp_a;
@@ -181,96 +204,20 @@ void see_tmp_and_do_the_the_thing(node **stack_a, node **stack_b, cheepest_move 
     tmp_a = find_node(stack_a, tmp->a->info);
     tmp_b = find_node(stack_b, tmp->b->info);
     if (up_or_down(tmp_a, stack_a) == up_or_down(tmp_b, stack_b))
-    {
         if (up_or_down(tmp_a, stack_a))
-        {
-            tmp->co_a = size_node(*stack_a) - tmp_a;
-            tmp->co_b = size_node(*stack_b) - tmp_b;
-            while (tmp->co_a != 0 && tmp->co_b != 0)
-            {
-                rrotate(stack_a);
-                rrotate(stack_b);
-                tmp->co_a--;
-                tmp->co_b--;
-                printf("rrr\n");
-            }
-            while (tmp->co_a != 0)
-            {
-                rrotate(stack_a);
-                tmp->co_a--;
-                printf("rra\n");
-            }
-            while (tmp->co_b != 0)
-            {
-                rrotate(stack_b);
-                tmp->co_b--;
-                printf("rrb\n");
-            }
-        }
+            doing_thinges_rrr(size_node(*stack_a) - tmp_a, size_node(*stack_b) - tmp_b, stack_a, stack_b);
         else
-        {
-            while (tmp->co_a != 0 && tmp->co_b != 0)
-            {
-                rotate(stack_a);
-                rotate(stack_b);
-                tmp->co_a--;
-                tmp->co_b--;
-                printf("rr\n");
-            }
-            while (tmp->co_a != 0)
-            {
-                rotate(stack_a);
-                tmp->co_a--;
-                printf("ra\n");
-            }
-            while (tmp->co_b != 0)
-            {
-                rotate(stack_b);
-                tmp->co_b--;
-                printf("rb\n");
-            }
-        }
-    }
+            doing_thinges_rr(tmp->co_a, tmp->co_b, stack_a, stack_b);
     else
     {
         if (up_or_down(tmp_a, stack_a))
-        {
-            tmp->co_a = size_node(*stack_a) - tmp_a;
-            while (tmp->co_a != 0)
-            {
-                rrotate(stack_a);
-                tmp->co_a--;
-                printf("rra\n");
-            }
-        }
+            doing_thinges_rrr(size_node(*stack_a) - tmp_a, 0, stack_a, stack_b);
         else
-        {
-            while (tmp->co_a != 0)
-            {
-                rotate(stack_a);
-                tmp->co_a--;
-                printf("ra\n");
-            }
-        }
+            doing_thinges_rr(tmp->co_a, 0, stack_a, stack_b);
         if (up_or_down(tmp_b, stack_b))
-        {
-            tmp->co_b = size_node(*stack_b) - tmp_b;
-            while (tmp->co_b != 0)
-            {
-                rrotate(stack_b);
-                tmp->co_b--;
-                printf("rrb\n");
-            }
-        }
+            doing_thinges_rrr(0, size_node(*stack_b) - tmp_b, stack_a, stack_b);
         else
-        {
-            while (tmp->co_b != 0)
-            {
-                rotate(stack_b);
-                tmp->co_b--;
-                printf("rb\n");
-            }
-        }
+            doing_thinges_rr(0, tmp->co_b, stack_a, stack_b);
     }
 }
 void sort_b_a(node **stack_a, node **stack_b, cheepest_move *tmp)
