@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:44:18 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 18:20:07 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 21:24:48 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,4 +48,20 @@ void	ft_fre(t_node **stack_a, t_node **stack_b, t_cheepest_move *tmp)
 	clear_all_nodes(stack_a);
 	clear_all_nodes(stack_b);
 	free(tmp);
+}
+
+int	is_sorted(t_node *head)
+{
+	t_node	*current;
+
+	if (!head || !head->next)
+		return (0);
+	current = head;
+	while (current->next != NULL)
+	{
+		if (current->info > current->next->info)
+			return (1);
+		current = current->next;
+	}
+	return (0);
 }

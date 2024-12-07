@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 20:52:26 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 21:11:44 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,8 +105,11 @@ int	main(int c, char **v)
 		free(tmp);
 		return (1);
 	}
-	sort_algo(&stack_a, &stack_b, tmp, size_node(stack_a));
-	make_it_okay(&stack_a);
+	if (is_sorted(stack_a))
+	{
+		sort_algo(&stack_a, &stack_b, tmp, size_node(stack_a));
+		make_it_okay(&stack_a);
+	}
 	ft_fre(&stack_a, &stack_b, tmp);
 	return (0);
 }
