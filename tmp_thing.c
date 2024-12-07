@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:04:04 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 16:30:29 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:11:52 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	doing_thinges_rrr(int a, int b, t_node **stack_a, t_node **stack_b)
 	while (a != 0 && b != 0)
 	{
 		rrotate(stack_a, "rrr\n");
-		rrotate(stack_b, NULL);
+		rrotate(stack_b, "");
 		a--;
 		b--;
 	}
@@ -53,7 +53,7 @@ void	doing_thinges_rr(int a, int b, t_node **stack_a, t_node **stack_b)
 	while (a != 0 && b != 0)
 	{
 		rotate(stack_a, "rr\n");
-		rotate(stack_b, NULL);
+		rotate(stack_b, "");
 		a--;
 		b--;
 	}

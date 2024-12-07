@@ -6,13 +6,63 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:53:20 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 14:53:47 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:20:45 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-char	*strjoin(int size, char **strs, char *sep)
+static int	checkinvalid(char **strs)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (strs[i])
+	{
+		j = 0;
+		while (strs[i][j])
+		{
+			if (!ft_isdigit(strs[i][j]))
+				if (strs[i][j] != '-' && strs[i][j] != '+')
+					return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+static int	checkdup(char **strs)
+{
+	int			i;
+	int			j;
+	long long	*num;
+
+	i = 0;
+	while (strs[i])
+		i++;
+	num = malloc(sizeof(*num) * i);
+	i = -1;
+	while (strs[++i])
+		num[i] = ft_atoi(strs[i]);
+	i = -1;
+	while (strs[++i])
+	{
+		if (num[i] > FTINTMAX || num[i] < FTINTMIN)
+			return (free(num), 1);
+		j = i + 1;
+		while (strs[j])
+		{
+			if (num[i] == num[j])
+				return (free(num), 1);
+			j++;
+		}
+	}
+	return (free(num), 0);
+}
+
+char	*f_strjoin(int size, char **strs, char *sep)
 {
 	char	*s;
 	int		i;
@@ -46,7 +96,7 @@ char	**parsestr(int size, char **argv)
 	char	*joined;
 	char	**split;
 
-	joined = strjoin(size, argv, " ");
+	joined = f_strjoin(size, argv, " ");
 	if (!joined)
 		return (NULL);
 	split = ft_split(joined, ' ');
@@ -63,17 +113,20 @@ int	see_c_v(int c, char **v, t_node **stack_a)
 
 	i = 0;
 	str = parsestr(--c, v + 1);
-	if (!str)
-		exit(1);
+	if (!str || checkinvalid(str) || checkdup(str))
+	{
+		ft_fr(str);
+		return (1);
+	}
 	while (str[i])
 	{
 		if (add_node(stack_a, ft_atoi(str[i])) == -1)
 		{
-			ft_fr(str, c);
+			ft_fr(str);
 			return (1);
 		}
 		i++;
 	}
-	ft_fr(str, i);
+	ft_fr(str);
 	return (0);
 }

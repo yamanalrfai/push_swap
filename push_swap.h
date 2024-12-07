@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:35:00 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 16:31:12 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:20:15 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	node_back(t_node **lst, t_node *new);
 void	clear_all_nodes(t_node **lst);
 void	tmp_doit(t_node **stack_a, t_node **stack_b, t_cheepest_move *tmp);
 void	save_in_the_rmp(t_node *a, t_node *b, t_cheepest_move *tmp, int move);
-void	ft_fr(char **ans, size_t i);
+void	ft_fr(char **ans);
 int		see_c_v(int c, char **v, t_node **stack_a);
 int		add_node(t_node **old, int n);
 int		find_node(t_node **lst, int inf);
@@ -58,6 +58,7 @@ t_node	*last_node(t_node **lst);
 t_node	*bigest_info(t_node *a);
 t_node	*smallest_info(t_node *a);
 t_node	*find_tar_a_b(t_node *a, t_node *b);
+char	*f_strjoin(int size, char **strs, char *sep);
 char	**parsestr(int size, char **strs);
 
 #endif

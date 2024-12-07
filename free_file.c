@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:44:18 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 14:50:01 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:20:07 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,17 @@ void	clear_all_nodes(t_node **lst)
 	*lst = NULL;
 }
 
-void	ft_fr(char **ans, size_t i)
+void	ft_fr(char **ans)
 {
-	while (i != 0)
+	int	i;
+
+	i = 0;
+	if (!ans)
+		return ;
+	while (ans[i])
 	{
 		free(ans[i]);
-		i--;
+		i++;
 	}
 	free(ans[i]);
 	free(ans);

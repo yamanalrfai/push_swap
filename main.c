@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 14:53:09 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:07:43 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,21 @@ void	make_it_okay(t_node **stack_a)
 	}
 }
 
+static t_cheepest_move	*tmp_mall(void)
+{
+	t_cheepest_move	*tmp;
+
+	tmp = malloc(sizeof(t_cheepest_move));
+	if (!tmp)
+		return (NULL);
+	tmp->a = NULL;
+	tmp->b = NULL;
+	tmp->co_a = 0;
+	tmp->co_b = 0;
+	tmp->the_cost = -1;
+	return (tmp);
+}
+
 int	main(int c, char **v)
 {
 	t_node			*stack_a;
@@ -66,11 +81,12 @@ int	main(int c, char **v)
 	stack_b = NULL;
 	if (c == 1)
 		return (1);
-	tmp = malloc(sizeof(t_cheepest_move));
+	tmp = tmp_mall();
 	if (!tmp)
 		return (1);
 	if (see_c_v(c, v, &stack_a))
 	{
+		ft_putstr_fd("Error\n", 1);
 		free(tmp);
 		return (1);
 	}
