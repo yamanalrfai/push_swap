@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 19:45:45 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 20:10:21 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 		push(s_a, s_b, "pb\n");
 		size -= 2;
 	}
-	while (size-- > 3)
+	while (size-- > 2)
 	{
 		tmp->the_cost = -1;
 		sort_a_b(s_a, s_b, tmp);
