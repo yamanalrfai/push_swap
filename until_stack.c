@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   until_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
+/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:36 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 12:06:08 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/07 14:45:29 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,19 +43,6 @@ void	node_back(t_node **lst, t_node *new)
 	}
 }
 
-void	node_front(t_node **lst, t_node *new)
-{
-	if (new == NULL)
-		return ;
-	if (*lst == NULL)
-		*lst = new;
-	else
-	{
-		new->next = *lst;
-		*lst = new;
-	}
-}
-
 int	find_node(t_node **lst, int inf)
 {
 	t_node	*i;
@@ -81,21 +68,6 @@ t_node	*last_node(t_node **lst)
 	while (i->next != NULL)
 		i = i->next;
 	return (i);
-}
-
-void	clear_all_nodes(t_node **lst)
-{
-	t_node	*current;
-	t_node	*next;
-
-	current = *lst;
-	while (current != NULL)
-	{
-		next = current->next;
-		free(current);
-		current = next;
-	}
-	*lst = NULL;
 }
 
 int	size_node(t_node *lst)

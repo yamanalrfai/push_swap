@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
+/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 12:39:53 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/07 14:53:09 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,90 +54,6 @@ void	make_it_okay(t_node **stack_a)
 		while (tmp->info != (*stack_a)->info)
 			rrotate(stack_a, "rra\n");
 	}
-}
-
-static char	*strjoin(int size, char **strs, char *sep)
-{
-	char	*s;
-	int		i;
-	int		j;
-	int		k;
-
-	j = ft_getlen(size, strs, sep);
-	s = malloc(j + 1);
-	if (!s)
-		return (NULL);
-	k = 0;
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		while (strs[i][j])
-			s[k++] = strs[i][j++];
-		if (i++ < size - 1)
-		{
-			j = 0;
-			while (sep[j])
-				s[k++] = sep[j++];
-		}
-	}
-	s[k] = 0;
-	return (s);
-}
-
-char	**parsestr(int size, char **argv)
-{
-	char	*joined;
-	char	**split;
-
-	joined = strjoin(size, argv, " ");
-	if (!joined)
-		return (NULL);
-	split = ft_split(joined, ' ');
-	free(joined);
-	if (!split)
-		return (NULL);
-	return (split);
-}
-
-void	ft_fr(char **ans, size_t i)
-{
-	while (i != 0)
-	{
-		free(ans[i]);
-		i--;
-	}
-	free(ans[i]);
-	free(ans);
-}
-
-int	see_c_v(int c, char **v, t_node **stack_a)
-{
-	char	**str;
-	int		i;
-
-	i = 0;
-	str = parsestr(--c, v + 1);
-	if (!str)
-		exit(1);
-	while (str[i])
-	{
-		if (add_node(stack_a, ft_atoi(str[i])) == -1)
-		{
-			ft_fr(str, c);
-			return (1);
-		}
-		i++;
-	}
-	ft_fr(str, i);
-	return (0);
-}
-
-void	ft_fre(t_node **stack_a, t_node **stack_b, t_cheepest_move *tmp)
-{
-	clear_all_nodes(stack_a);
-	clear_all_nodes(stack_b);
-	free(tmp);
 }
 
 int	main(int c, char **v)

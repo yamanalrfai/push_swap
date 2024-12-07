@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
+/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:35:00 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 12:36:01 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/07 16:31:12 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ void	sort_two(t_node **stack_a);
 void	cheek_num(t_node **stack_a);
 void	node_back(t_node **lst, t_node *new);
 void	clear_all_nodes(t_node **lst);
-void	node_front(t_node **lst, t_node *new);
 void	tmp_doit(t_node **stack_a, t_node **stack_b, t_cheepest_move *tmp);
 void	save_in_the_rmp(t_node *a, t_node *b, t_cheepest_move *tmp, int move);
+void	ft_fr(char **ans, size_t i);
 int		see_c_v(int c, char **v, t_node **stack_a);
 int		add_node(t_node **old, int n);
 int		find_node(t_node **lst, int inf);

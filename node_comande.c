@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   node_comande.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
+/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 21:00:54 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/06 23:17:53 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/07 14:42:59 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,13 @@ void	push(t_node **from, t_node **to, char *str)
 
 	tmp = (*from)->next;
 	(*from)->next = NULL;
-	node_front(to, *from);
+	if (*to == NULL)
+		*to = *from;
+	else
+	{
+		(*from)->next = *to;
+		*to = *from;
+	}
 	(*from) = tmp;
 	ft_putstr_fd(str, 1);
 }
