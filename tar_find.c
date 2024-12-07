@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:57:40 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 14:59:32 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 19:42:46 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_node	*find_tar_a_b(t_node *a, t_node *b)
 	while (b)
 	{
 		if ((b->info < a->info))
-			if ((tar->info > a->info || tar->info > b->info))
+			if ((tar->info > a->info || tar->info < b->info))
 				tar = b;
 		b = b->next;
 	}
