@@ -12,56 +12,59 @@
 
 #include "push_swap.h"
 
-void swap(node **st, char *str)
+void	swap(t_node **st, char *str)
 {
-    node *sec;
+	t_node	*sec;
 
-    sec = (*st)->next;
-    if (size_node(*st) > 2)
-        (*st)->next = sec->next;
-    else
-        (*st)->next = NULL;
-    sec->next = *st;
-    *st = sec;
-    ft_putstr_fd(str, 1);
+	sec = (*st)->next;
+	if (size_node(*st) > 2)
+		(*st)->next = sec->next;
+	else
+		(*st)->next = NULL;
+	sec->next = *st;
+	*st = sec;
+	ft_putstr_fd(str, 1);
 }
-void push(node **from ,node **to, char *str)
-{
-    node *tmp;
 
-    tmp = (*from)->next;
-    (*from)->next = NULL;
-    node_front(to, *from);
-    (*from) = tmp;
-    ft_putstr_fd(str, 1);
+void	push(t_node **from, t_node **to, char *str)
+{
+	t_node	*tmp;
+
+	tmp = (*from)->next;
+	(*from)->next = NULL;
+	node_front(to, *from);
+	(*from) = tmp;
+	ft_putstr_fd(str, 1);
 }
-void rotate(node **st, char *str)
-{
-    node *tmp;
-    node *last;
 
-    if (size_node(*st) < 2)
-        return;
-    tmp = *st;
-    *st = (*st)->next;
-    last = last_node(st);
-    last->next = tmp;
-    tmp->next = NULL;
-    ft_putstr_fd(str, 1);
+void	rotate(t_node **st, char *str)
+{
+	t_node	*tmp;
+	t_node	*last;
+
+	if (size_node(*st) < 2)
+		return ;
+	tmp = *st;
+	*st = (*st)->next;
+	last = last_node(st);
+	last->next = tmp;
+	tmp->next = NULL;
+	ft_putstr_fd(str, 1);
 }
-void rrotate(node **st, char *str)
-{
-    node *last;
-    node *sec;
 
-    if (size_node(*st) < 2)
-        return;
-    last = last_node(st);
-    sec = *st;
-    while (sec->next != last)
-        sec = sec->next;
-    sec->next = NULL;
-    last->next = *st;
-    *st = last;
-    ft_putstr_fd(str, 1);
+void	rrotate(t_node **st, char *str)
+{
+	t_node	*last;
+	t_node	*sec;
+
+	if (size_node(*st) < 2)
+		return ;
+	last = last_node(st);
+	sec = *st;
+	while (sec->next != last)
+		sec = sec->next;
+	sec->next = NULL;
+	last->next = *st;
+	*st = last;
+	ft_putstr_fd(str, 1);
 }
