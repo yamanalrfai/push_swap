@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:53:20 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 18:20:45 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:48:35 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,31 @@ static int	checkinvalid(char **strs)
 	return (0);
 }
 
+int	dup_(char **strs, int i, long long *num)
+{
+	int	j;
+
+	j = i + 1;
+	while (strs[j])
+	{
+		if (num[i] == num[j])
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
 static int	checkdup(char **strs)
 {
 	int			i;
-	int			j;
 	long long	*num;
 
 	i = 0;
 	while (strs[i])
 		i++;
 	num = malloc(sizeof(*num) * i);
+	if (!num)
+		return (1);
 	i = -1;
 	while (strs[++i])
 		num[i] = ft_atoi(strs[i]);
@@ -51,15 +66,14 @@ static int	checkdup(char **strs)
 	{
 		if (num[i] > FTINTMAX || num[i] < FTINTMIN)
 			return (free(num), 1);
-		j = i + 1;
-		while (strs[j])
+		if (dup_(strs, i, num))
 		{
-			if (num[i] == num[j])
-				return (free(num), 1);
-			j++;
+			free(num);
+			return (1);
 		}
 	}
-	return (free(num), 0);
+	free(num);
+	return (0);
 }
 
 char	*f_strjoin(int size, char **strs, char *sep)
@@ -89,21 +103,6 @@ char	*f_strjoin(int size, char **strs, char *sep)
 	}
 	s[k] = 0;
 	return (s);
-}
-
-char	**parsestr(int size, char **argv)
-{
-	char	*joined;
-	char	**split;
-
-	joined = f_strjoin(size, argv, " ");
-	if (!joined)
-		return (NULL);
-	split = ft_split(joined, ' ');
-	free(joined);
-	if (!split)
-		return (NULL);
-	return (split);
 }
 
 int	see_c_v(int c, char **v, t_node **stack_a)

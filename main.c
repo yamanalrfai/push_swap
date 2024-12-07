@@ -6,11 +6,26 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 18:07:43 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/07 18:47:53 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+char	**parsestr(int size, char **argv)
+{
+	char	*joined;
+	char	**split;
+
+	joined = f_strjoin(size, argv, " ");
+	if (!joined)
+		return (NULL);
+	split = ft_split(joined, ' ');
+	free(joined);
+	if (!split)
+		return (NULL);
+	return (split);
+}
 
 void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 {
@@ -82,9 +97,7 @@ int	main(int c, char **v)
 	if (c == 1)
 		return (1);
 	tmp = tmp_mall();
-	if (!tmp)
-		return (1);
-	if (see_c_v(c, v, &stack_a))
+	if (!tmp || see_c_v(c, v, &stack_a))
 	{
 		ft_putstr_fd("Error\n", 1);
 		free(tmp);
