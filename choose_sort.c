@@ -6,18 +6,28 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:00:39 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 15:04:47 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 13:24:13 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	cheek_num(t_node **stack_a)
+int	cheek_num(char *nptr)
 {
-	if (size_node(*stack_a) == 2)
-		sort_two(stack_a);
-	else
-		sort_three(stack_a);
+	long int	i;
+
+	i = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+		i++;
+	if (!nptr[i])
+		return (1);
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+		i++;
+	if (!nptr[i])
+		return (1);
+	return (0);
 }
 
 void	sort_two(t_node **stack_a)

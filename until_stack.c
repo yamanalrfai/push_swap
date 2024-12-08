@@ -6,13 +6,13 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:36 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 14:45:29 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 13:15:51 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	add_node(t_node **old, int inf)
+int	add_node(t_node **old, char *inf)
 {
 	t_node	*a;
 
@@ -22,7 +22,7 @@ int	add_node(t_node **old, int inf)
 		clear_all_nodes(old);
 		return (-1);
 	}
-	a->info = inf;
+	a->info = ft_atoi(inf);
 	a->next = NULL;
 	node_back(old, a);
 	return (1);

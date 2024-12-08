@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:35:00 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 21:25:10 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 13:15:24 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	sort_algo(t_node **a, t_node **b, t_cheepest_move *tmp, int size);
 void	make_it_okay(t_node **stack_a);
 void	ft_fre(t_node **stack_a, t_node **stack_b, t_cheepest_move *tmp);
 void	sort_two(t_node **stack_a);
-void	cheek_num(t_node **stack_a);
 void	node_back(t_node **lst, t_node *new);
 void	clear_all_nodes(t_node **lst);
 void	tmp_doit(t_node **stack_a, t_node **stack_b, t_cheepest_move *tmp);
 void	save_in_the_rmp(t_node *a, t_node *b, t_cheepest_move *tmp, int move);
 void	ft_fr(char **ans);
+int		cheek_num(char *ans);
 int		see_c_v(int c, char **v, t_node **stack_a);
-int		add_node(t_node **old, int n);
+int		add_node(t_node **old, char *n);
 int		find_node(t_node **lst, int inf);
 int		size_node(t_node *lst);
 int		co_cost(t_node *a, t_node *b, t_node **stack_a, t_node **stack_b);

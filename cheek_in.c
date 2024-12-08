@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:53:20 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 18:48:35 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 13:27:35 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	checkinvalid(char **strs)
 	i = 0;
 	while (strs[i])
 	{
+		if (cheek_num(strs[i]))
+			return (1);
 		j = 0;
 		while (strs[i][j])
 		{
@@ -119,7 +121,7 @@ int	see_c_v(int c, char **v, t_node **stack_a)
 	}
 	while (str[i])
 	{
-		if (add_node(stack_a, ft_atoi(str[i])) == -1)
+		if (add_node(stack_a, str[i]) == -1)
 		{
 			ft_fr(str);
 			return (1);
