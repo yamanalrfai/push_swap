@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:53:20 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 16:43:00 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 16:51:17 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	dup_(char **strs, int i)
 	j = i + 1;
 	while (strs[j])
 	{
-		if (my_strcmp(strs[j], strs[i]) == 0)
+		if (ft_strcmp(strs[j], strs[i]) == 0)
 			return (1);
 		j++;
 	}
