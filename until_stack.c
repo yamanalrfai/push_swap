@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:51:36 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/08 13:15:51 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 14:21:17 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	add_node(t_node **old, char *inf)
 	t_node	*a;
 
 	a = malloc(sizeof(t_node));
-	if (!a)
+	if (!a || cheek_num(inf))
 	{
 		clear_all_nodes(old);
 		return (-1);

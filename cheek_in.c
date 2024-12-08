@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:53:20 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 13:27:35 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 16:43:00 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,14 @@ static int	checkinvalid(char **strs)
 	return (0);
 }
 
-int	dup_(char **strs, int i, long long *num)
+int	dup_(char **strs, int i)
 {
 	int	j;
 
 	j = i + 1;
 	while (strs[j])
 	{
-		if (num[i] == num[j])
+		if (my_strcmp(strs[j], strs[i]) == 0)
 			return (1);
 		j++;
 	}
@@ -52,29 +52,13 @@ int	dup_(char **strs, int i, long long *num)
 static int	checkdup(char **strs)
 {
 	int			i;
-	long long	*num;
 
-	i = 0;
-	while (strs[i])
-		i++;
-	num = malloc(sizeof(*num) * i);
-	if (!num)
-		return (1);
-	i = -1;
-	while (strs[++i])
-		num[i] = ft_atoi(strs[i]);
 	i = -1;
 	while (strs[++i])
 	{
-		if (num[i] > FTINTMAX || num[i] < FTINTMIN)
-			return (free(num), 1);
-		if (dup_(strs, i, num))
-		{
-			free(num);
+		if (dup_(strs, i) || cheek_max(strs[i]) || cheek_max(strs[i]))
 			return (1);
-		}
 	}
-	free(num);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:00:39 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 13:24:13 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 14:22:05 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	cheek_num(char *nptr)
 		return (1);
 	while (nptr[i] >= '0' && nptr[i] <= '9')
 		i++;
-	if (!nptr[i])
+	if (nptr[i])
 		return (1);
 	return (0);
 }

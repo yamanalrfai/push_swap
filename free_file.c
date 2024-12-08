@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:44:18 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 21:24:48 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 16:36:28 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,34 @@ int	is_sorted(t_node *head)
 		if (current->info > current->next->info)
 			return (1);
 		current = current->next;
+	}
+	return (0);
+}
+
+int	cheek_min(char *str)
+{
+	char	*min;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	min = "-2147483648";
+	if (f_strlen(str) > f_strlen(min))
+		return (1);
+	else if (f_strlen(str) < f_strlen(min))
+		return (0);
+	while (min[i] || str[j])
+	{
+		if (str[j] == min[i])
+		{
+			i++;
+			j++;
+		}
+		else if (str[j] > min[i])
+			return (1);
+		else
+			break ;
 	}
 	return (0);
 }

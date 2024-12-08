@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:35:00 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/08 13:15:24 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 16:43:52 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,10 @@ int		size_node(t_node *lst);
 int		co_cost(t_node *a, t_node *b, t_node **stack_a, t_node **stack_b);
 int		up_or_down(int tmp, t_node **stack_a);
 int		is_sorted(t_node *head);
+int		cheek_min(char *str);
+int		cheek_max(char *str);
+int		f_strlen(const char *str);
+int		ft_strcmp(char *str1, char *str2);
 t_node	*find_tar_b_a(t_node *a, t_node *b);
 t_node	*last_node(t_node **lst);
 t_node	*bigest_info(t_node *a);

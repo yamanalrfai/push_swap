@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:57:40 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/07 19:42:46 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 16:43:26 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,4 +68,31 @@ t_node	*find_tar_b_a(t_node *a, t_node *b)
 		a = a->next;
 	}
 	return (tar);
+}
+
+int	cheek_max(char *str)
+{
+	char	*max;
+	int		i;
+	int		j;
+
+	i = 0;
+	j = 0;
+	max = "2147483647";
+	if (f_strlen(str) > f_strlen(max))
+		return (1);
+	else if (f_strlen(str) < f_strlen(max))
+		return (0);
+	if (str[i] == '+')
+		j = 1;
+	while (max[i] || str[i + j])
+	{
+		if (str[j] == max[i])
+			i++;
+		else if (str[j] > max[i])
+			return (1);
+		else
+			break ;
+	}
+	return (0);
 }
