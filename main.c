@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/07 21:11:44 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/08 19:42:57 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,13 +101,16 @@ int	main(int c, char **v)
 	tmp = tmp_mall();
 	if (!tmp || see_c_v(c, v, &stack_a))
 	{
-		ft_putstr_fd("Error\n", 1);
+		ft_putstr_fd("Error\n", 2);
 		free(tmp);
 		return (1);
 	}
 	if (is_sorted(stack_a))
 	{
-		sort_algo(&stack_a, &stack_b, tmp, size_node(stack_a));
+		if (size_node(stack_a) == 3)
+			sort_three(&stack_a);
+		else
+			sort_algo(&stack_a, &stack_b, tmp, size_node(stack_a));
 		make_it_okay(&stack_a);
 	}
 	ft_fre(&stack_a, &stack_b, tmp);
