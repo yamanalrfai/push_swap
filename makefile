@@ -1,10 +1,10 @@
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror
 LIBDIR = libft
 LIB = $(LIBDIR)/libft.a
 
 OBJS = $(SRC:.c=.o)
-SRC = node_comande.c soet_algo.c main.c free_file.c cheek_in.c choose_sort.c tar_find.c tmp_thing.c until_stack.c
+SRC = node_comande.c soet_algo.c main.c free_file.c cheek_in.c choose_sort.c tar_find.c tmp_thing.c until_stack.c num_cheek.c
 NAME = push_swap
 
 all: $(NAME)
