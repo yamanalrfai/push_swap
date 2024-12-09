@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/08 19:42:57 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/09 15:16:44 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,8 @@ void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 		push(s_a, s_b, "pb\n");
 		size -= 2;
 	}
-	if (size == 3)
-		sort_three (s_a);
-	else
 	{
-		while (size-- > 2)
+		while (size-- > 3)
 		{
 			tmp->the_cost = -1;
 			sort_a_b(s_a, s_b, tmp);
@@ -47,6 +44,7 @@ void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 			push(s_a, s_b, "pb\n");
 		}
 	}
+	sort_three (s_a);
 	while (size_node(*s_b) != 0)
 	{
 		tmp->the_cost = -1;
