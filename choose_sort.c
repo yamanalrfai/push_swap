@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   choose_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 15:00:39 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 14:22:05 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/10 21:05:45 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ int	cheek_num(char *nptr)
 	if (nptr[i])
 		return (1);
 	return (0);
+}
+
+void	vind_sort(t_node **stack_a)
+{
+	if (size_node(*stack_a) == 2)
+		sort_two(stack_a);
+	else if (size_node(*stack_a) == 3)
+		sort_three(stack_a);
 }
 
 void	sort_two(t_node **stack_a)

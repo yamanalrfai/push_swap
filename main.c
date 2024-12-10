@@ -6,7 +6,7 @@
 /*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/10 19:44:17 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/10 21:06:49 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ char	**parsestr(int size, char **argv)
 
 void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 {
-	if (size > 2)
+	if (size > 3)
 	{
 		push(s_a, s_b, "pb\n");
 		push(s_a, s_b, "pb\n");
@@ -42,7 +42,7 @@ void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 		tmp_doit(s_a, s_b, tmp);
 		push(s_a, s_b, "pb\n");
 	}
-	sort_three (s_a);
+	vind_sort(s_a);
 	while (size_node(*s_b) != 0)
 	{
 		tmp->the_cost = -1;
