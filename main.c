@@ -6,7 +6,7 @@
 /*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 15:45:35 by yaman-alrif       #+#    #+#             */
-/*   Updated: 2024/12/09 15:16:44 by yaman-alrif      ###   ########.fr       */
+/*   Updated: 2024/12/10 19:44:17 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ void	sort_algo(t_node **s_a, t_node **s_b, t_cheepest_move *tmp, int size)
 		push(s_a, s_b, "pb\n");
 		size -= 2;
 	}
+	while (size-- > 3)
 	{
-		while (size-- > 3)
-		{
-			tmp->the_cost = -1;
-			sort_a_b(s_a, s_b, tmp);
-			tmp_doit(s_a, s_b, tmp);
-			push(s_a, s_b, "pb\n");
-		}
+		tmp->the_cost = -1;
+		sort_a_b(s_a, s_b, tmp);
+		tmp_doit(s_a, s_b, tmp);
+		push(s_a, s_b, "pb\n");
 	}
 	sort_three (s_a);
 	while (size_node(*s_b) != 0)
@@ -105,10 +103,7 @@ int	main(int c, char **v)
 	}
 	if (is_sorted(stack_a))
 	{
-		if (size_node(stack_a) == 3)
-			sort_three(&stack_a);
-		else
-			sort_algo(&stack_a, &stack_b, tmp, size_node(stack_a));
+		sort_algo(&stack_a, &stack_b, tmp, size_node(stack_a));
 		make_it_okay(&stack_a);
 	}
 	ft_fre(&stack_a, &stack_b, tmp);
