@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   tar_find.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:57:40 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 16:43:26 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/12 22:02:51 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,11 +85,11 @@ int	cheek_max(char *str)
 		return (0);
 	if (str[i] == '+')
 		j = 1;
-	while (max[i] || str[i + j])
+	while (max[i] && str[i + j])
 	{
-		if (str[j] == max[i])
+		if (str[i + j] == max[i])
 			i++;
-		else if (str[j] > max[i])
+		else if (str[i + j] > max[i])
 			return (1);
 		else
 			break ;

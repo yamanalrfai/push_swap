@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cheek_in.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:53:20 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 16:51:17 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/12 21:27:20 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	checkdup(char **strs)
 	i = -1;
 	while (strs[++i])
 	{
-		if (dup_(strs, i) || cheek_max(strs[i]) || cheek_max(strs[i]))
+		if (dup_(strs, i) || cheek_max(strs[i]) || cheek_min(strs[i]))
 			return (1);
 	}
 	return (0);

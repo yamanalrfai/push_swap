@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:44:18 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 16:36:28 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/12 22:22:26 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,23 +70,20 @@ int	cheek_min(char *str)
 {
 	char	*min;
 	int		i;
-	int		j;
 
-	i = 0;
-	j = 0;
+	i = 1;
 	min = "-2147483648";
+	if (str[0] != '-')
+		return (0);
 	if (f_strlen(str) > f_strlen(min))
 		return (1);
 	else if (f_strlen(str) < f_strlen(min))
 		return (0);
-	while (min[i] || str[j])
+	while (min[i] && str[i])
 	{
-		if (str[j] == min[i])
-		{
+		if (str[i] == min[i])
 			i++;
-			j++;
-		}
-		else if (str[j] > min[i])
+		else if (str[i] > min[i])
 			return (1);
 		else
 			break ;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   num_cheek.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yaman-alrifai <yaman-alrifai@student.42    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/08 16:42:33 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/08 17:39:31 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/12 21:34:28 by yaman-alrif      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	f_strlen(const char *str)
 
 	length = 0;
 	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		i = 1;
 	while (str[i] == '0')
 		i++;
 	while (str[length + i] != '\0')
 		length++;
-	if (str[0] == '+' || str[0] == '-')
-		length--;
 	return (length);
 }
