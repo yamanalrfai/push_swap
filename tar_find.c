@@ -6,7 +6,7 @@
 /*   By: yalrfai <yalrfai@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/07 14:57:40 by yalrfai           #+#    #+#             */
-/*   Updated: 2024/12/16 17:25:42 by yalrfai          ###   ########.fr       */
+/*   Updated: 2024/12/16 18:16:41 by yalrfai          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,14 +79,14 @@ int	cheek_max(char *str)
 	i = 0;
 	j = 0;
 	max = "2147483647";
-	if (f_strlen(str) > 10)
+	if (f_strlen(str) > f_strlen(max))
 		return (1);
-	else if (f_strlen(str) < 10)
+	else if (f_strlen(str) < f_strlen(max))
 		return (0);
 	if (str[i] == '+')
 		j = 1;
 	while (str[i + j] == '0')
-		i++;
+		j++;
 	while (max[i] && str[i + j])
 	{
 		if (str[i + j] == max[i])
